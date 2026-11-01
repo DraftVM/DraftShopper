@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 
-@main struct MyApp: App {
+@main struct DraftShopperApp: App {
     private let container: ModelContainer
     @State private var router = AppRouter()
 

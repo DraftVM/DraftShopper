@@ -14,6 +14,8 @@ enum SeedData {
 
     /// Wipes the bag, orders, and catalog, then reseeds. Used by "Reset Demo Data".
     static func reset(_ context: ModelContext) {
+        // Batch deletes only affect saved data, so flush pending inserts first or they'd survive the reset.
+        try? context.save()
         try? context.delete(model: CartItem.self)
         try? context.delete(model: OrderLine.self)
         try? context.delete(model: CustomerOrder.self)
